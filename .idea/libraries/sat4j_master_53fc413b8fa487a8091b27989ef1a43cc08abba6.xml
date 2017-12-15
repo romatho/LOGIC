@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.br4cp/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.br4cp/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.core/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.core/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.csp.xmlparser/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.intervalorders/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.intervalorders/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.maxsat/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.maxsat/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.pb/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.pb/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.sat/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6/org.sat4j.sudoku/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

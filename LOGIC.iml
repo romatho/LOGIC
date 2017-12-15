@@ -7,5 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="sat4j-master-53fc413b8fa487a8091b27989ef1a43cc08abba6" level="project" />
   </component>
 </module>

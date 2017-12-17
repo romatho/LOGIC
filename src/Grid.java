@@ -1,10 +1,7 @@
 import org.sat4j.core.VecInt;
-import org.sat4j.minisat.SolverFactory;
 import org.sat4j.specs.*;
 import org.sat4j.tools.SingleSolutionDetector;
-import org.sat4j.tools.SolutionCounter;
 
-import java.util.ArrayList;
 
 public class Grid {
     private int[][] sudoku;
@@ -26,12 +23,6 @@ public class Grid {
             System.out.println();
         }
     }
-    /*
-     * pour chaque case il y a 9 éléments, un pour chaque chiffre possible
-     * l'élément 1 est le 1 de la première case
-     * l'élément 10 est le 1 de la seconde case
-     * etc
-     */
 
     public void addClause(ISolver solver) {
 
@@ -70,7 +61,7 @@ public class Grid {
         * Chaque colonne doit contenir au moins une fois chaque chiffre
         *
         */
-        S
+
         for (int i = 0; i < size; i++)
             for (int j = 1; j <= size; j++) {
                 for (int k = 0; k < size; k++)

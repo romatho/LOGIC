@@ -1,13 +1,8 @@
-import org.sat4j.core.VecInt;
 import org.sat4j.minisat.SolverFactory;
-import org.sat4j.reader.ParseFormatException;
-import org.sat4j.specs.ContradictionException;
 import org.sat4j.specs.IProblem;
 import org.sat4j.specs.ISolver;
 import org.sat4j.specs.TimeoutException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Main {
 

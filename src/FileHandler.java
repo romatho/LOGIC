@@ -1,20 +1,32 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class FileHandler {
+    private int[][] sudoku;
 
-    public FileHandler(String Filename)
+    public FileHandler()
     {
-        File file = new File(Filename);
-        FileReader fileReader ;
-        try {
-            fileReader = new FileReader(file);
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            e.printStackTrace();
-
-        }
-
+        sudoku = new int[9][9];
     }
 
+    public void readSudoku(String Filename)
+    {
+        try {
+            Scanner scanner = new Scanner(new File(Filename));
+
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                    sudoku[i][j] = scanner.nextInt();
+
+        }catch (FileNotFoundException e)
+        {
+            System.out.println("File not Found");
+        }
+    }
+
+    public int[][] getSudoku()
+    {
+        return sudoku;
+    }
 
 }

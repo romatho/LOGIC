@@ -28,5 +28,22 @@ public class FileHandler {
     {
         return sudoku;
     }
+    public void writeSudoku(String fileName, int[][] sudoku, int size)
+    {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(fileName, "UTF-8");
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++)
+                    writer.print(sudoku[i][j] + " ");
+                writer.println();
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

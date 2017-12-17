@@ -15,13 +15,12 @@ public class Main {
     public static void main(String[] args)
     {
         int size = 9;
-        boolean mode= true;
+        boolean mode = false;
         FileHandler fileHandler = new FileHandler();
         if(mode) {
             fileHandler.readSudoku("C:\\Users\\kidre\\sudoku2.in");
             Grid grid = new Grid(fileHandler.getSudoku());
             grid.display();
-
             try {
                 ISolver solver = SolverFactory.newDefault();
                 solver.newVar(size * size * size);
@@ -57,6 +56,7 @@ public class Main {
             solver.newVar(size * size * size);
             grid.addClause(solver);
             grid.fillSudoku(solver);
+            fileHandler.writeSudoku("C:\\Users\\kidre\\sudoku3.txt",grid.getSudoku(), grid.getSize());
             grid.display();
         }
     }

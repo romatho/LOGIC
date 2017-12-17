@@ -35,10 +35,10 @@ public class Grid {
 
     public void addClause(ISolver solver) {
 
-
         /*
          * Chaque case doit contenir au moins une valeur
          */
+
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++) {
                 for (int k = 0; k < size; k++)
@@ -65,10 +65,12 @@ public class Grid {
                     System.out.println(" Unsatisfiable");
                 }
             }
+
         /*
         * Chaque colonne doit contenir au moins une fois chaque chiffre
         *
         */
+        S
         for (int i = 0; i < size; i++)
             for (int j = 1; j <= size; j++) {
                 for (int k = 0; k < size; k++)
@@ -94,17 +96,8 @@ public class Grid {
                         solver.addClause(new VecInt(clause));
                     } catch (ContradictionException e) {
                         System.out.println(" Unsatisfiable");
-                    }/*
-                    for (int l = 0; l < size; l++) {
-                        System.out.print(clause[l] + " ");
                     }
-                    System.out.println();*/
-
                 }
-
-
-
-
 
         /*
          * Chaque case sans chiffre doit contenir au plus une valeur
@@ -206,7 +199,6 @@ public class Grid {
         SingleSolutionDetector problem = new SingleSolutionDetector(solver);
         value = (int) (Math.random()*size);
         clauseToAdd[0] = (x*size+y)*size + value + 1;
-        //first elment
         try {
             idClause = solver.addClause(new VecInt(clauseToAdd));
         } catch (ContradictionException e) {
@@ -216,10 +208,7 @@ public class Grid {
 
         while(true)
         {
-            //System.out.println(i);
             try {
-                IProblem problem1 = solver;
-                problem = new SingleSolutionDetector(solver);
                 if (problem.isSatisfiable()){
 
                     if (problem.hasASingleSolution())
@@ -257,10 +246,14 @@ public class Grid {
         }
     }
 
-    public void addNewValue()
+    public int[][] getSudoku()
     {
-
-
-
+        return sudoku;
     }
+    public int getSize()
+    {
+        return size;
+    }
+
+
 }

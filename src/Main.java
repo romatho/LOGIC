@@ -25,23 +25,36 @@ public class Main {
     public static void main(String[] args)
     {
         int size = 9;
-        int[][] temp=new int[size][size];
         FileHandler fileHandler = new FileHandler();
-        if(args.length==2) {
+        if(args.length == 2) {
+            int[][] temp = new int[size][size];
+            /*
+             * Reading the input file
+             */
             fileHandler.readSudoku(args[0]);
             Grid grid = new Grid(fileHandler.getSudoku());
             grid.display();
             try {
                 ISolver solver = SolverFactory.newDefault();
                 solver.newVar(size * size * size);
+                /*
+                 * Add general and particular clauses in the solver
+                 */
                 grid.addClause(solver);
                 IProblem problem = solver;
+                /*
+                 * Use the solver to obtain the solution
+                 */
                 if (problem.isSatisfiable())
                 {
                     System.out.println(" The solution is:");
                     int[] model = solver.model();
                     int i=0;
                     int j=0;
+                    /*
+                     * Display the solution in the console
+                     * Store the solution in a matrix
+                     */
                     for (int l = 0; l < model.length; l++)
                     {
                         if (l % (size*size) == 0 && l!=0)
@@ -67,6 +80,9 @@ public class Main {
                         }
                     }
                     System.out.println();
+                    /*
+                     * Write the solution in the output file
+                     */
                     fileHandler.writeSudoku(args[1], temp, size);
                 }
                  else
@@ -80,11 +96,23 @@ public class Main {
         }
         else if(args.length==1)
         {
+            /*
+             * Initialise a empty sudoku and a new solver
+             */
             Grid grid = new Grid(new int[size][size]);
             ISolver solver = SolverFactory.newDefault();
             solver.newVar(size * size * size);
+            /*
+             * Add general clauses in the solver
+             */
             grid.addClause(solver);
+            /*
+             * Fill the sudoku and add the corresponding clauses in the solver
+             */
             grid.fillSudoku(solver);
+            /*
+             * Write the solution in the output file
+             */
             fileHandler.writeSudoku(args[0],grid.getSudoku(), grid.getSize());
             grid.display();
         }

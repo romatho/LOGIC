@@ -9,6 +9,11 @@ public class FileHandler {
         sudoku = new int[9][9];
     }
 
+    /**
+     * Read the sudoku from a file
+     * @param Filename of the file to read
+     */
+
     public void readSudoku(String Filename)
     {
         try {
@@ -24,10 +29,22 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Get the sudoku read
+     * @return
+     */
     public int[][] getSudoku()
     {
         return sudoku;
     }
+
+    /**
+     * Write a sudoku in a file
+     * @param fileName of the file where the sudoku must be written
+     * @param sudoku sudoku to write
+     * @param size size of the sudoku
+     */
+
     public void writeSudoku(String fileName, int[][] sudoku, int size)
     {
         PrintWriter writer = null;

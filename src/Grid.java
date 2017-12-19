@@ -16,6 +16,9 @@ public class Grid {
         clause = new int[size];
     }
 
+    /**
+     * Display the grid in the console
+     */
     public void display() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++)
@@ -24,10 +27,23 @@ public class Grid {
         }
     }
 
+    /**
+     * Add general clauses (and particular clauses if the sudoku is not empty) in a solver
+     * @param solver the solver where the clause are added
+     */
     public void addClause(ISolver solver) {
 
         /*
-         * Chaque case doit contenir au moins une valeur
+         * A sudoku grid is divided in 9 blocks and each block is divided in 9 squares
+         */
+
+        /*
+         * GENREAL CLAUSES (sudoku rules)
+         */
+
+
+        /*
+         * Each square must contain at least a number
          */
 
         for (int i = 0; i < size; i++)
@@ -42,9 +58,8 @@ public class Grid {
             }
 
         /*
-        * Chaque ligne doit contenir au moins une fois chaque chiffre
-        *
-        */
+         * Each lines must contain at least one time each number
+         */
 
         for (int i = 0; i < size; i++)
             for (int j = 1; j <= size; j++) {
@@ -58,9 +73,8 @@ public class Grid {
             }
 
         /*
-        * Chaque colonne doit contenir au moins une fois chaque chiffre
-        *
-        */
+         * Each column must contain at least one time each number
+         */
 
         for (int i = 0; i < size; i++)
             for (int j = 1; j <= size; j++) {
@@ -74,7 +88,7 @@ public class Grid {
             }
 
         /*
-         * Chaque carré doit contenir au moins une fois chaque chiffre
+         * Each block must contain at least one time each number
          */
 
         for (int i = 0; i < subsize; i++)
@@ -91,8 +105,9 @@ public class Grid {
                 }
 
         /*
-         * Chaque case sans chiffre doit contenir au plus une valeur
+         * Each square must contain at most a number
          */
+
         clause = new int[2];
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
@@ -109,9 +124,8 @@ public class Grid {
                 }
 
         /*
-        * Chaque ligne doit contenir au plus une fois chaque chiffre
-        */
-
+         * Each line must contain at most a number
+         */
 
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
@@ -128,9 +142,9 @@ public class Grid {
                 }
 
         /*
-        * Chaque colonne doit contenir au plus une fois chaque chiffre
-        *
-        */
+         * Each column must contain at most a number
+         */
+
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 for (int k = 0; k < size - 1; k++) {
@@ -147,7 +161,7 @@ public class Grid {
                 }
 
         /*
-         * Chaque carré doit contenir au plus une fois chaque chiffre
+         * Each block must contain at most a number
          */
 
         for (int i = 0; i < subsize; i++)
@@ -164,8 +178,13 @@ public class Grid {
                             }
                         }
                     }
+
         /*
-         * Chaque nombre déjà écrit dans la grille correspond à une variable qui doit être vraie
+         * PARTICULAR CLAUSES (data from the number in the sudoku)
+         */
+
+        /*
+         * For each non-zero value in a square, the corresponding boolean must be true
          */
 
         int[] miniClause = new int[1];
@@ -180,6 +199,11 @@ public class Grid {
                     }
                 }
     }
+
+    /**
+     * Fill an empty sudoku with number until the solver said there is only one solution
+     * @param solver the solver used to check the number of solution
+     */
 
     public void fillSudoku(ISolver solver) {
         int x = (int) (Math.random()) % size;
@@ -200,7 +224,12 @@ public class Grid {
         while(true)
         {
             try {
+
                 if (problem.isSatisfiable()){
+
+                    /*
+                     * If the problem is satifiable and have only one solution, the grid is filled and the function ends
+                     */
 
                     if (problem.hasASingleSolution())
                     {
@@ -209,11 +238,24 @@ public class Grid {
                     }
                     else
                     {
+                        /*
+                         * If the problem is satifiable and have multiple solutions, a number is added to the grid
+                         */
+
+                        /*
+                         * To reduce the number of loop, the square to fill remains the same until an acceptable value
+                         * (value that satisfied the model) is choosen
+                         */
                         while(sudoku[x][y] != 0)
                         {
                             x = (int) (Math.random()*size);
                             y = (int) (Math.random()*size);
                         }
+
+                        /*
+                         * The square is filled with a random value and the corresponding clauses is add in the solver
+                         */
+
                         value = (int) (Math.random()*size);
                         clauseToAdd[0] = (x*size+y)*size + value + 1;
                         try {
@@ -227,7 +269,11 @@ public class Grid {
                 }
                 else
                 {
-                    //if the problem have no solution, remove the last clause
+
+                    /*
+                     * If there is no solution, the last clauses is removed from the solver and the corresponding square
+                     * is filled with a 0
+                     */
                     solver.removeConstr(idClause);
                     sudoku[x][y] = 0;
                 }
@@ -237,10 +283,21 @@ public class Grid {
         }
     }
 
+    /**
+     * get the sudoku grid
+     * @return
+     */
+
     public int[][] getSudoku()
     {
         return sudoku;
     }
+
+    /**
+     * get the size of the sudoku grid
+     * @return
+     */
+
     public int getSize()
     {
         return size;

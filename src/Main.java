@@ -12,7 +12,7 @@ import org.sat4j.specs.TimeoutException;
 * - faire le rapport => Commencé: sharelatex:  https://www.sharelatex.com/8543838958bqhkfvrrdcqb
 * - fournir un build.xml
 * - forunir un INSTALL file si nécessaire
-*- output le sudoku résolu DONE
+* - output le sudoku résolu DONE
 *
 *
 *
@@ -44,18 +44,18 @@ public class Main {
                     int j=0;
                     for (int l = 0; l < model.length; l++)
                     {
-                        if (l % 81 == 0 && l!=0)
+                        if (l % (size*size) == 0 && l!=0)
                         {
                             i++;j=0;
                             System.out.println();
                         }
                         if (model[l] > 0) {
-                            int value = model[l] % 81;
-                            value = value % 9;
+                            int value = model[l] % (size*size);
+                            value = value % size;
                             if (value == 0)
                             {
-                                System.out.print(9 + " ");
-                                temp[i][j]=9;
+                                System.out.print(size + " ");
+                                temp[i][j]=size;
                                 j++;
                             }
                             else

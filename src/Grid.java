@@ -228,7 +228,7 @@ public class Grid {
                 if (problem.isSatisfiable()){
 
                     /*
-                     * If the problem is satifiable and have only one solution, the grid is filled and the function ends
+                     * If the problem is satisfiable and have only one solution, the grid is filled and the function ends
                      */
 
                     if (problem.hasASingleSolution())
@@ -239,12 +239,12 @@ public class Grid {
                     else
                     {
                         /*
-                         * If the problem is satifiable and have multiple solutions, a number is added to the grid
+                         * If the problem is satisfiable and have multiple solutions, a number is added to the grid
                          */
 
                         /*
                          * To reduce the number of loop, the square to fill remains the same until an acceptable value
-                         * (value that satisfied the model) is choosen
+                         * (value that satisfied the model) is chosen
                          */
                         while(sudoku[x][y] != 0)
                         {

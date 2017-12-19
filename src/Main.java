@@ -3,20 +3,6 @@ import org.sat4j.specs.IProblem;
 import org.sat4j.specs.ISolver;
 import org.sat4j.specs.TimeoutException;
 
-/* TODO list (j'ai pas trouvé comment ajouter un fichier texte et j'avais peur de tout casser
-*
-* - vérifier que le code fonctionne sur MS800
-* - arranger le code du main pour avoir un truc propre en fonction du nombre d'argument au lieu d'un IF ELSE moche DONE
-* - améliorer le main pour récupérer les argument au lieu de hard coder les chemins des fichiers DONE
-* - commenter le code
-* - faire le rapport => Commencé: sharelatex:  https://www.sharelatex.com/8543838958bqhkfvrrdcqb
-* - fournir un build.xml
-* - forunir un INSTALL file si nécessaire
-* - output le sudoku résolu DONE
-*
-*
-*
-*/
 
 
 public class Main {

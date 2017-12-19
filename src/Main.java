@@ -9,22 +9,10 @@ import org.sat4j.specs.TimeoutException;
 * - arranger le code du main pour avoir un truc propre en fonction du nombre d'argument au lieu d'un IF ELSE moche DONE
 * - améliorer le main pour récupérer les argument au lieu de hard coder les chemins des fichiers DONE
 * - commenter le code
-* - faire le rapport
+* - faire le rapport => Commencé: sharelatex:  https://www.sharelatex.com/8543838958bqhkfvrrdcqb
 * - fournir un build.xml
 * - forunir un INSTALL file si nécessaire
-*- outputer le sudoku résolu
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
+*- output le sudoku résolu DONE
 *
 *
 *
@@ -37,6 +25,7 @@ public class Main {
     public static void main(String[] args)
     {
         int size = 9;
+        int[][] temp=new int[size][size];
         FileHandler fileHandler = new FileHandler();
         if(args.length==2) {
             fileHandler.readSudoku(args[0]);
@@ -47,26 +36,44 @@ public class Main {
                 solver.newVar(size * size * size);
                 grid.addClause(solver);
                 IProblem problem = solver;
-                if (problem.isSatisfiable()) {
+                if (problem.isSatisfiable())
+                {
                     System.out.println(" The solution is:");
                     int[] model = solver.model();
-
-                    for (int l = 0; l < model.length; l++) {
-                        if (l % 81 == 0)
+                    int i=0;
+                    int j=0;
+                    for (int l = 0; l < model.length; l++)
+                    {
+                        if (l % 81 == 0 && l!=0)
+                        {
+                            i++;j=0;
                             System.out.println();
+                        }
                         if (model[l] > 0) {
                             int value = model[l] % 81;
                             value = value % 9;
                             if (value == 0)
+                            {
                                 System.out.print(9 + " ");
+                                temp[i][j]=9;
+                                j++;
+                            }
                             else
+                            {
                                 System.out.print(value + " ");
+                                temp[i][j]=value;
+                                j++;
+                            }
                         }
                     }
                     System.out.println();
-                } else {
+                    fileHandler.writeSudoku(args[1], temp, size);
+                }
+                 else
+                {
                     System.out.println(" Unsatisfiable !");
                 }
+
             } catch (TimeoutException e) {
                 System.out.println(" Timeout , sorry !");
             }

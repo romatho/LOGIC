@@ -41,12 +41,10 @@ public class Main {
                  * Add general and particular clauses in the solver
                  */
                 grid.addClause(solver);
-                IProblem problem = solver;
+                if (solver.isSatisfiable()){
                 /*
                  * Use the solver to obtain the solution
                  */
-                if (problem.isSatisfiable())
-                {
                     System.out.println(" The solution is:");
                     int[] model = solver.model();
                     int i=0;

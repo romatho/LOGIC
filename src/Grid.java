@@ -38,7 +38,7 @@ public class Grid {
          */
 
         /*
-         * GENREAL CLAUSES (sudoku rules)
+         * GENERAL CLAUSES (sudoku rules)
          */
 
 
@@ -201,7 +201,7 @@ public class Grid {
     }
 
     /**
-     * Fill an empty sudoku with number until the solver said there is only one solution
+     * Fill an empty sudoku with numbers until the solver says there is only one solution
      * @param solver the solver used to check the number of solution
      */
 
